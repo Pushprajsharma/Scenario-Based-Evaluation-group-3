@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Post_Experience.Models.Skill>
+
+@{
+    ViewData["Title"] = "dashboard";
+
+}
+
+
+<br />
+
+<h1>Details</h1>
+
+<div class="container" style=" width: 400px; border: 1px solid black; padding: 20px; margin: 10px; border-radius:10px">
+    <h3>@ViewBag.emp.FirstName</h3>
+    <p>@ViewBag.emp.LastName</p>
+    <p>@ViewBag.emp.CellNumber</p>
+    <p>@ViewBag.emp.Email</p>
+    <p>
+        <a href="/Home/Create">Add Skill</a> | <a href="/Home/EditEmployee"> Edit Employee </a>
+    </p>
+
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExInYear)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExInYear)
+                </td>
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SkillId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SkillId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SkillId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

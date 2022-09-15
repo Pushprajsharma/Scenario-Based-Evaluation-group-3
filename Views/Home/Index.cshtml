@@ -1,0 +1,80 @@
+﻿@model Post_Experience.Models.Employee
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_index.cshtml";
+}
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><h2 class="text-white">Post Experience</h2></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mob-navbar" aria-label="Toggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mob-navbar">
+                <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+
+                    <form class="d-flex" asp-action="checkEmployee">
+                        <input style="margin-left : 5px" class="form-control me-2" name="email" type="text" placeholder="Username" />
+                        <input  style="margin-left : 5px"class="form-control me-2" name="password" type="password" placeholder="Password" />
+                        <input style="margin-left : 5px" class="btn btn-primary" type="submit" value="Login">
+                    </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<h6 class="text-danger">@TempData["error"]</h6>
+
+<hr />
+<h4>Sign In</h4>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input type="password" asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LandLine" class="control-label"></label>
+                <input asp-for="LandLine" class="form-control" />
+                <span asp-validation-for="LandLine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CellNumber" class="control-label"></label>
+                <input asp-for="CellNumber" class="form-control" />
+                <span asp-validation-for="CellNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
